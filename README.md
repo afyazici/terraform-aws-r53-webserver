@@ -19,7 +19,7 @@ Before running this project, ensure the following prerequisites are met:
 2. **Configuration**:
     - Clone this repository to your local machine.
     - Modify the `variables.tf` file to set your configurations
-      Modify the `main.yml` file.
+    - Modify the `main.yml` line ==32,52==
     - Run `terraform init` to initialize the Terraform configuration.
     - Run `terraform apply` to provision the infrastructure on AWS.
 
