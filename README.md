@@ -1,4 +1,4 @@
-# Project Name
+# terraform-ansible-aws-webserver
 
 ## Description
 This project aims to automate the deployment of a website using Terraform for infrastructure provisioning and Ansible for configuration management. The infrastructure includes an EC2 instance, security group configurations, Route 53 hosted zone setup, and Apache web server with SSL/TLS certificate configuration using Let's Encrypt.
