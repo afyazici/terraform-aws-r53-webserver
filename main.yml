@@ -1,0 +1,63 @@
+---
+- name: Update system and install necessary packages
+  hosts: host1
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Certbot
+      apt:
+        name: certbot
+        state: present
+
+    - name: Install Certbot Apache plugin
+      apt:
+        name: python3-certbot-apache
+        state: present
+      ignore_errors: yes
+
+    - name: Ensure Apache2 is installed
+      apt:
+        name: apache2
+        state: present
+
+    - name: Ensure Apache2 is running
+      service:
+        name: apache2
+        state: started
+
+    - name: Obtain and install SSL certificate using Certbot
+      command: certbot --apache --agree-tos --redirect --non-interactive --email your@gmail.com --domains www.example.com
+      ignore_errors: yes
+
+    - name: Restart Apache2 to apply changes
+      service:
+        name: apache2
+        state: restarted
+
+- name: Deploy website from Git repository
+  hosts: host1
+  become: yes
+  tasks:
+    - name: Remove existing website directory if it exists
+      ansible.builtin.file:
+        path: /var/www/html
+        state: absent
+      ignore_errors: yes
+
+    - name: Clone website repository from Git
+      ansible.builtin.git:
+        repo: 'https://github.com/c3ngo/c3ngo.github.io.git'
+        dest: /tmp/c3ngo_website
+        clone: yes
+
+    - name: Rename directory to website root
+      ansible.builtin.command:
+        cmd: mv /tmp/c3ngo_website /var/www/html
+
+    - name: Restart Apache2 to serve updated website
+      service:
+        name: apache2
+        state: restarted
