@@ -1,60 +1,36 @@
-# terraform-ansible-aws-webserver
-This project aims to automate infrastructure setup on AWS using Terraform and Ansible. It launches AWS EC2 instances, configures them with Apache web servers, and secures them with SSL certificates using Certbot. By defining infrastructure as code, this project aims to provide a repeatable, scalable, and securely deployable architecture.
+# Project Name
 
-# Infrastructure as Code (IaC) Project
-
-## Introduction
-
-This project automates the setup of infrastructure components using Terraform and Ansible. It provisions an AWS EC2 instance, configures it with an Apache web server, and secures it with an SSL certificate using Certbot.
+## Description
+This project aims to automate the deployment of a website using Terraform for infrastructure provisioning and Ansible for configuration management. The infrastructure includes an EC2 instance, security group configurations, Route 53 hosted zone setup, and Apache web server with SSL/TLS certificate configuration using Let's Encrypt.
 
 ## Prerequisites
-
-Before getting started, ensure you have the following prerequisites:
-
-- Terraform installed.
-- Ansible installed.
-- AWS account credentials configured.
-- Amazon AWS key pair (.pem file) located in the project directory.
+Before running this project, ensure the following prerequisites are met:
+- AWS account with appropriate permissions
+- Terraform installed on your local machine
+- Ansible installed on your local machine
+- Domain name registered with a registrar that supports Route 53
 
 ## Setup
+1. **Domain Name Configuration**: 
+    - Register a domain name with a registrar that supports Route 53.
+    - Create a Route 53 hosted zone for the domain.
+    - Set the Amazon NS values provided by Route 53 as the nameservers for your domain through your domain registrar's management panel.
 
-1. Clone this repository.
-2. Install and configure the prerequisites.
-3. Customize variables in `variables.tf`.
-4. Run `terraform init` and `terraform apply`.
-5. After provisioning, Ansible will configure the EC2 instance.
+2. **Configuration**:
+    - Clone this repository to your local machine.
+    - Modify the `variables.tf` file to set your configurations
+      Modify the `main.yml` file.
+    - Run `terraform init` to initialize the Terraform configuration.
+    - Run `terraform apply` to provision the infrastructure on AWS.
 
 ## Usage
+Once the setup is complete, the website will be accessible at your configured domain name. You can visit instance's public IP address for testing purposes. However, please note that DNS resolution may take some time.
 
-To deploy infrastructure and configure the EC2 instance, run:
+## Components
+- **Terraform**: Used for provisioning AWS infrastructure including EC2 instance and security group configurations.
+- **Ansible**: Used for configuring the EC2 instance with Apache web server, Let's Encrypt SSL/TLS certificate, and deploying the website.
+- **Route 53**: Used for domain name management and DNS resolution.
+- **Let's Encrypt**: Used for SSL/TLS certificate issuance.
 
-```bash
-terraform apply
-```
-## Variables
-
-- `region`: AWS region.
-- `vpc`: ID of VPC.
-- `ami`: AMI ID.
-- `itype`: Instance type.
-- `subnet`: Subnet ID.
-- `publicip`: Assign a public IP.
-- `keyname`: SSH key name.
-- `secgroupname`: Security group name.
-- `private_key_path`: Path to the private key file.
-- `zone_id`: Route53 Zone ID.
-- `domain_name`: Domain name.
-
-## Directory Structure
-
-- `main.tf`: Terraform configuration.
-- `variables.tf`: Variable definitions.
-- `main.yml`: Ansible playbook.
-- `README.md`: Project documentation.
-
-## Notes
-
-- Ensure the AWS key pair (.pem file) is present.
-- Customize variables in `variables.tf` before running Terraform.
-- Assumes familiarity with Terraform, Ansible, and AWS services.
-- The project, in its current state, starts serving the c3ngo.github.io repository as a web service by cloning it through the main.yml file.
+## License
+This project is licensed under the [MIT License](LICENSE).
