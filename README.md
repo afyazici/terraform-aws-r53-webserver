@@ -1,5 +1,7 @@
 # terraform-ansible-aws-webserver
-
+---
+![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white) Ansible 	![Ansible](https://img.shields.io/badge/ansible-%231A1918.svg?style=for-the-badge&logo=ansible&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+---
 ## Description
 This project aims to automate the deployment of a website using Terraform for infrastructure provisioning and Ansible for configuration management. The infrastructure includes an EC2 instance, security group configurations, Route 53 hosted zone setup, and Apache web server with SSL/TLS certificate configuration using Let's Encrypt.
 
