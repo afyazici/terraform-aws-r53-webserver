@@ -20,10 +20,7 @@ Before running this project, ensure the following prerequisites are met:
 
 2. **Configuration**:
     - Clone this repository to your local machine.
-    - Modify the `variables.tf` file to set your configurations.
-    - Modify the `main.yml` line `32,52`
-    - Run `terraform init` to initialize the Terraform configuration.
-    - Run `terraform apply` to provision the infrastructure on AWS.
+    - Modify the `variables.tf` and `main.yml` file to set your configurations.
 
 ## Usage
 Once the setup is complete, the website will be accessible at your configured domain name. You can visit instance's public IP address for testing purposes. However, please note that DNS resolution may take some time.
