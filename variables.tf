@@ -37,19 +37,19 @@ variable "publicip" {
 variable "keyname" {
   description = "SSH key name"
   type        = string
-  default     = "wtfkey"
+  default     = "keyname"
 }
 
 variable "secgroupname" {
   description = "Security group name"
   type        = string
-  default     = "SecurityGroup1"
+  default     = "SecurityGroupName"
 }
 
 variable "private_key_path" {
   description = "Path to the private key file"
   type        = string
-  default     = "/your/aws/key_pair/location/key.pem"
+  default     = "/your/aws/key_pair/location/keyname.pem"
 }
 
 variable "zone_id" {
